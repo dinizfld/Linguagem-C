@@ -1,23 +1,40 @@
-#include <iostream>
+#include <stdio.h>
 #include <stdlib.h>
 
 int main() {
+    int opcao, num1, num2;
 
-    int num1, num2, soma, sub, multi, div;
+    do {
+        printf("\n1 - Soma\n2 - Subtracao\n3 - Multiplicacao\n4 - Divisao\n0 - Sair\n\n");
+        scanf("%d", &opcao);
 
-    cout << "Seja bem vindo a nossa primeira calculadora" << endl;
-    cout << "Digite o primeiro numero: " << endl;
-    cin >> num1;
-    cout << "Digite o segundo numero: " << endl;
-    cin >> num2;
+        if(opcao > 0 && opcao < 5){
+            printf("Digite dois valores: ");
+            scanf("%d%d",&num1, &num2);
+        }
 
-    cout << "A soma e: " << num1 + num2 << endl;
-    cout << "A subtracao e: " << num1 - num2 << endl;
-    cout << "O produto e: " << num1 * num2 << endl;
-    cout << "A divisao e: " << num1 / num2 << endl;
-
-
-
-    system("pause");
-    return 0;
+        switch(opcao) {
+        case 0:
+            printf("Saindo...\n");
+            break;
+        case 1:
+            printf("Soma: %d\n", num1 + num2);
+            break;
+        case 2:
+            printf("Subtracao: %d\n", num1 - num2);
+            break;
+        case 3:
+            printf("Multiplicacao: %d\n", num1 * num2);
+            break;
+        case 4:
+            while(num2 == 0) {
+                printf("Nao existe divisao por zero!\nDigite outro valor: ");
+                scanf("%d", &num2);
+            }
+            printf("Divisao: %d\n", num1 / num2);
+            break;
+        default:
+            printf("Opcao inválida.\nDigite outra opcao: ");
+        }
+    } while(opcao != 0);
 }
